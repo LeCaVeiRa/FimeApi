@@ -6,12 +6,15 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace FilmesApi.Controllers
 {
+    [ApiController]
+    [Route("[controller]")]
     public class EnderecoController : ControllerBase 
     {
         private FilmeContext _context;
         private IMapper _mapper;
 
         [HttpPost]
+        [ProducesResponseType(StatusCodes.Status201Created)]
         public IActionResult AdicionaEndereco([FromBody] CreateEnderecoDto enderecoDto)
         {
             Endereco endereco = _mapper.Map<Endereco>(enderecoDto);

@@ -6,6 +6,8 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace FilmesApi.Controllers;
 
+[ApiController]
+[Route("[controller]")]
 public class CinemaController : ControllerBase
 {
     private FilmeContext _context;
@@ -54,8 +56,8 @@ public class CinemaController : ControllerBase
     [HttpDelete("{id}")]
     public IActionResult DeletaCinema(int id)
     {
-        Cinema cinema = _context.Cinemas.FirstOrDefault(cinema => cinema.CinemaId == id);
-        if(cinema == null)
+        Cinema cinema = _context.Cinemas.FirstOrDefault(cinema => cinema.Id == id);
+        if (cinema == null)
         {
             return NotFound();
         }
